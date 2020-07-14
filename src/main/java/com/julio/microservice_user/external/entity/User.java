@@ -18,6 +18,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.julio.microservice_user.external.dto.request.UserRequestDTO;
+import com.julio.microservice_user.utils.PasswordUtils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -42,8 +44,8 @@ public class User implements Serializable {
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "PROFILES")
-    private final Set<Integer> profiles = new HashSet<>();
+    @CollectionTable(name = "PLATFORMS")
+    private final Set<Integer> platforms = new HashSet<>();
 
     @JsonIgnore
     @CreationTimestamp
@@ -52,5 +54,12 @@ public class User implements Serializable {
     @JsonIgnore
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
+    
+    public User(UserRequestDTO userRequest) {
+    	this.name = userRequest.getName();
+    	this.email = userRequest.getEmail();
+    	this.password = PasswordUtils.getSHA512(userRequest.getPassword());
+    	this.platforms.addAll(userRequest.getPlatforms());
+    }
 
 }

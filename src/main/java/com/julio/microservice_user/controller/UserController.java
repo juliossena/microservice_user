@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.julio.microservice_user.external.dto.request.CredenciaisDTO;
+import com.julio.microservice_user.external.dto.request.UserRequestDTO;
 import com.julio.microservice_user.external.entity.User;
 import com.julio.microservice_user.service.UserService;
 
@@ -24,6 +25,11 @@ public class UserController {
         return ResponseEntity.ok(service.login(credenciais));
     }
 
+
+    @PostMapping(value = "/create")
+    public ResponseEntity<User> createUser(@RequestBody final UserRequestDTO userRequest) {
+        return ResponseEntity.ok(service.createUser(userRequest));
+    }
 
 
 }

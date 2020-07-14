@@ -1,6 +1,6 @@
 package com.julio.microservice_user.external.enums;
 
-public enum Profile {
+public enum Platforms {
 
     ADMIN(0, "ROLE_ADMIN"), CLIENT(1, "ROLE_CLIENTE");
 
@@ -8,7 +8,7 @@ public enum Profile {
     private String description;
 
 
-    private Profile(final int code, final String description) {
+    private Platforms(final int code, final String description) {
         this.code = code;
         this.description = description;
     }
@@ -21,12 +21,12 @@ public enum Profile {
         return this.description;
     }
 
-    public static Profile toEnum(final Integer code) {
+    public static Platforms toEnum(final Integer code) {
         if (code == null) {
             return null;
         }
 
-        for (final Profile x : Profile.values()) {
+        for (final Platforms x : Platforms.values()) {
             if (code.equals(x.getCod())) {
                 return x;
             }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.julio.microservice_user.exception.ObjectNotFoundException;
 import com.julio.microservice_user.external.dto.request.CredenciaisDTO;
+import com.julio.microservice_user.external.dto.request.UserRequestDTO;
 import com.julio.microservice_user.external.entity.User;
 import com.julio.microservice_user.external.repository.UserRepository;
 import com.julio.microservice_user.utils.PasswordUtils;
@@ -27,5 +28,8 @@ public class UserService {
     	throw new ObjectNotFoundException("Sala não encontrada");
     }
 
+    public User createUser(UserRequestDTO user) {
+    	return userRepository.save(new User(user));
+    }
 
 }
