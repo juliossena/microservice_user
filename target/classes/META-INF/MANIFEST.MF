@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: microservice_user
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: dti
+Implementation-Vendor-Id: com.julio.microservice_user
+Build-Jdk: 1.8.0_211
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/microservice_user
+Created-By: Maven Integration for Eclipse
+
